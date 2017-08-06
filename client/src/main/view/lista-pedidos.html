@@ -1,0 +1,33 @@
+<md-content>
+    <div class='md-padding' layout="row" flex>
+        <div layout="row" flex>
+            <div class="parent" layout="column" ng-repeat="pedido in $ctrl.getPedidos() track by $index" flex>
+                <md-card style="height: 250px;">
+                    <div layout="row" layout-align="start start">
+                        <md-card-title layout="column" layout-align="space-around start" flex="40">
+                            <md-card-title-media>
+                                <div class="md-media-lg card-media">
+                                    <img ng-src="{{pedido.usuario.foto}}" style="max-height: 150px; max-width: 300px;">
+                                </div>
+                            </md-card-title-media>
+                            <md-card-title-text>
+                                <span class="md-headline">Pedido #{{$index + 1}}</span>
+                                <span class="md-subhead">{{pedido.usuario.nome}}</span>
+                                <span class="md-subhead" md-colors="{color: '{{$ctrl.getColor(pedido.status)}}'}">{{pedido.status}}</span>
+                            </md-card-title-text>
+                        </md-card-title>
+                        <md-card-content>
+                            <br>
+                            <span class="md-title">
+                                <label for="lista">Produtos</label>
+                            </span>
+                            <div id="lista" layout="column" ng-repeat="produto in pedido.produtos">
+                                <p><b>{{produto.quantidade}}x</b> {{produto.nome}}</p>
+                            </div>
+                        </md-card-content>
+                    </div>
+                </md-card>
+            </div>
+        </div>
+    </div>
+</md-content>
