@@ -2,9 +2,12 @@ angular.module('feirinha').service('pedidosService', ['$q', function ($q) {
 
     var self = this;
 
+    var app = angular.module("feirinha", ["firebase"]);
+
     var pedidos = [
         {
-            usuario: {nome: "Lucas", foto: "https://scontent.fcpv3-1.fna.fbcdn.net/v/t1.0-9/20621338_1500901673310802_142952303273340208_n.jpg?oh=c0149bcf587a4fe3260a27d07fd4baa4&oe=59ED2473"},
+            usuario: {nome: "Lucas",
+                      foto: "https://scontent.fcpv3-1.fna.fbcdn.net/v/t1.0-9/20621338_1500901673310802_142952303273340208_n.jpg?oh=c0149bcf587a4fe3260a27d07fd4baa4&oe=59ED2473"},
             produtos: [
                 {nome: "Arroz Branco", quantidade: 1},
                 {nome: "Feijão Preto", quantidade: 1},

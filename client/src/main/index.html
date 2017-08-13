@@ -28,6 +28,24 @@
 <script src="/node_modules/angular-messages/angular-messages.min.js"></script>
 <script src="/node_modules/@uirouter/angularjs/release/angular-ui-router.js"></script>
 
+<!-- Firebase path -->
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyC5cHouvbZzuKzVoel_7D8K0OHWM2h23ck",
+        authDomain: "budegamiga-2b5e3.firebaseapp.com",
+        databaseURL: "https://budegamiga-2b5e3.firebaseio.com",
+        projectId: "budegamiga-2b5e3",
+        storageBucket: "budegamiga-2b5e3.appspot.com",
+        messagingSenderId: "1054140113239"
+    };
+    firebase.initializeApp(config);
+</script>
+
+<!-- AngularFire -->
+<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+
 <!-- Angular Material Library -->
 <script src="/node_modules/angular-material/angular-material.min.js"></script>
 
