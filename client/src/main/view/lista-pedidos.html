@@ -1,8 +1,11 @@
 <md-content>
+    <div class="loading-indicator" ng-if="$ctrl.canShow">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
     <div class='md-padding' layout="row" flex>
         <div layout="row" flex>
             <div class="parent" layout="column" ng-repeat="pedido in $ctrl.getPedidos() track by $index" flex>
-                <md-card style="height: 250px;">
+                <md-card>
                     <div layout="row" layout-align="start start">
                         <md-card-title layout="column" layout-align="space-around start" flex="40">
                             <md-card-title-media>
@@ -16,7 +19,7 @@
                                 <span class="md-subhead" md-colors="{color: '{{$ctrl.getColor(pedido.status)}}'}">{{pedido.status}}</span>
                             </md-card-title-text>
                         </md-card-title>
-                        <md-card-content>
+                        <md-card-content style="width: 100%; height: 100%;">
                             <br>
                             <span class="md-title">
                                 <label for="lista">Produtos</label>
@@ -25,17 +28,16 @@
                                 <div ng-repeat="produto in pedido.produtos">
                                     <p><b>{{produto.quantidade}}x</b> {{produto.nome}}</p>
                                 </div>
-                                <!--<p class="md-subhead">{{pedido.usuario.endereco}}</p>-->
                             </div>
+                            <md-card-actions layout="row" layout-align="space-around center">
+                                <md-button class="md-raised md-icon-button" md-colors="{color: 'green'}" ng-click="$ctrl.aprovaPedido($index)">
+                                    <i class="material-icons">check</i>
+                                </md-button>
+                                <md-button class="md-raised md-icon-button" md-colors="{color: 'red'}" ng-click="$ctrl.recusaPedido($index)">
+                                    <i class="material-icons">clear</i>
+                                </md-button>
+                            </md-card-actions>
                         </md-card-content>
-                        <md-card-actions layout="column" layout-align="space-around start">
-                            <md-button class="md-warn md-raised md-icon-button" ng-click="$ctrl.recusaPedido($index)">
-                                Recusar
-                            </md-button>
-                            <md-button class="md-primary md-raised md-icon-button" ng-click="$ctrl.aprovaPedido($index)">
-                                Aprovar
-                            </md-button>
-                        </md-card-actions>
                     </div>
                 </md-card>
             </div>

@@ -3,13 +3,15 @@ angular.module('feirinha').component('listaPedidos', {
     scope: {
         theme: '@'
     },
-    controller: ['pedidosService', function (pedidosService) {
+    controller: ['pedidosService', 'modalService', 'toastService', function (pedidosService, modalService, toastService) {
         var self = this;
         self.pedidos= {pedidos: ""};
+        this.canShow = true;
 
         pedidosService.getTodosPedidos().$loaded().then(function (data) {
             self.pedidos = data;
             console.log(self.pedidos.pedidos);
+            self.canShow = false;
         });
 
         this.getPedidos = function () {
@@ -27,13 +29,23 @@ angular.module('feirinha').component('listaPedidos', {
         }
 
         this.aprovaPedido = function (index) {
-            self.pedidos.pedidos[index].status = "Aprovado";
-            salva();
+            modalService.showConfirm("Aprovar pedido", "Deseja aprovar o pedido?").then(function () {
+                self.pedidos.pedidos[index].status = "Aprovado";
+                salva();
+                toastService.showActionToast("Pedido aprovado com sucesso!");
+            }, function () {
+
+            });
         };
 
         this.recusaPedido = function (index) {
-            self.pedidos.pedidos[index].status = "Recusado";
-            salva();
+            modalService.showConfirm("Recusar pedido", "Deseja recusar o pedido?").then(function () {
+                self.pedidos.pedidos[index].status = "Recusado";
+                salva();
+                toastService.showActionToast("Pedido recusado com sucesso!");
+            }, function () {
+
+            });
         };
         
         this.podeAlterarStatus = function (index) {
