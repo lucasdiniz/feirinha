@@ -7,7 +7,7 @@
                         <md-card-title layout="column" layout-align="space-around start" flex="40">
                             <md-card-title-media>
                                 <div class="md-media-lg card-media">
-                                    <img ng-src="{{pedido.usuario.foto}}" style="max-height: 150px; max-width: 300px;">
+                                    <img ng-src="{{pedido.usuario.foto }}" style="max-height: 150px; max-width: 300px;">
                                 </div>
                             </md-card-title-media>
                             <md-card-title-text>
@@ -21,10 +21,21 @@
                             <span class="md-title">
                                 <label for="lista">Produtos</label>
                             </span>
-                            <div id="lista" layout="column" ng-repeat="produto in pedido.produtos">
-                                <p><b>{{produto.quantidade}}x</b> {{produto.nome}}</p>
+                            <div id="lista" layout="column">
+                                <div ng-repeat="produto in pedido.produtos">
+                                    <p><b>{{produto.quantidade}}x</b> {{produto.nome}}</p>
+                                </div>
+                                <!--<p class="md-subhead">{{pedido.usuario.endereco}}</p>-->
                             </div>
                         </md-card-content>
+                        <md-card-actions layout="column" layout-align="space-around start">
+                            <md-button class="md-warn md-raised md-icon-button" ng-click="$ctrl.recusaPedido($index)">
+                                Recusar
+                            </md-button>
+                            <md-button class="md-primary md-raised md-icon-button" ng-click="$ctrl.aprovaPedido($index)">
+                                Aprovar
+                            </md-button>
+                        </md-card-actions>
                     </div>
                 </md-card>
             </div>

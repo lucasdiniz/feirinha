@@ -1,13 +1,23 @@
-angular.module('feirinha').service('pedidosService', ['$q', function ($q) {
+angular.module('feirinha').service('pedidosService', ['$q', '$firebaseObject', function ($q, $firebaseObject) {
 
     var self = this;
+    self.pedidos;
 
-    var app = angular.module("feirinha", ["firebase"]);
+
+    /*
+     Recupera todos os pedidos. Por enquanto apenas local.
+     */
+    this.getTodosPedidos = function () {
+        var ref = firebase.database().ref().child("Pedidos");
+        var obj = $firebaseObject(ref);
+        return obj;
+    };
+
 
     var pedidos = [
         {
             usuario: {nome: "Lucas",
-                      foto: "https://scontent.fcpv3-1.fna.fbcdn.net/v/t1.0-9/20621338_1500901673310802_142952303273340208_n.jpg?oh=c0149bcf587a4fe3260a27d07fd4baa4&oe=59ED2473"},
+                foto: "https://scontent.fcpv3-1.fna.fbcdn.net/v/t1.0-9/20621338_1500901673310802_142952303273340208_n.jpg?oh=c0149bcf587a4fe3260a27d07fd4baa4&oe=59ED2473"},
             produtos: [
                 {nome: "Arroz Branco", quantidade: 1},
                 {nome: "Feijão Preto", quantidade: 1},
@@ -22,27 +32,20 @@ angular.module('feirinha').service('pedidosService', ['$q', function ($q) {
                 {nome: "Grade de Skol", quantidade: 3},
                 {nome: "Vinho Pinheirense", quantidade: 10}
             ],
-            status: "Aprovado"
+            status: "Pendente"
         },
         {
             usuario: {nome: "Gustavo", foto: "https://scontent.fcpv3-1.fna.fbcdn.net/v/t1.0-9/12728868_997039777042635_2680224942150063859_n.jpg?oh=4508bd57c2872a93e6ed89a77df35548&oe=5A27CC24"},
             produtos: [
                 {nome: "Sal", quantidade: 3},
-                {nome: "Farinha", quantidade: 2},
+                {nome: "Farinha de Rosca", quantidade: 2},
                 {nome: "Açúcar", quantidade: 4}
             ],
-            status: "Recusado"
+            status: "Pendente"
         }
     ];
 
-    /*
-    Recupera todos os pedidos. Por enquanto apenas local.
-     */
-    this.getTodosPedidos = function () {
-        console.log('pedidosService');
-        console.log(pedidos);
-        return pedidos;
-        return $q.when(pedidos);
-    }
+
+
 
 }]);

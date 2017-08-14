@@ -21,9 +21,12 @@
 // })
 
 
-angular.module('feirinha', ['ngMaterial', 'ngAnimate', "ui.router"]).config(function($mdThemingProvider) {
-    $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
-    $mdThemingProvider.theme('dark-orange').backgroundPalette('orange').dark();
-    $mdThemingProvider.theme('dark-purple').backgroundPalette('deep-purple').dark();
-    $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
-});
+angular.module('feirinha', ['ngMaterial', 'ngAnimate', "ui.router", "firebase"])
+    .config(function($mdThemingProvider) {
+        $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
+        $mdThemingProvider.theme('dark-orange').backgroundPalette('orange').dark();
+        $mdThemingProvider.theme('dark-purple').backgroundPalette('deep-purple').dark();
+        $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
+    })
+    // constant for the Firebase we're using
+    .constant('FBURL', 'https://budegamiga-2b5e3.firebaseio.com/Pedidos');
