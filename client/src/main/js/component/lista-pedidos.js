@@ -5,7 +5,7 @@ angular.module('feirinha').component('listaPedidos', {
     },
     controller: ['pedidosService', 'modalService', 'toastService', function (pedidosService, modalService, toastService) {
         var self = this;
-        self.pedidos= {pedidos: ""};
+        self.pedidos;
         this.canShow = true;
 
         pedidosService.getTodosPedidos().$loaded().then(function (data) {
@@ -40,7 +40,7 @@ angular.module('feirinha').component('listaPedidos', {
 
         this.recusaPedido = function (index) {
             modalService.showConfirm("Recusar pedido", "Deseja recusar o pedido?").then(function () {
-                self.pedidos.pedidos[index].status = "Recusado";
+                self.pedidos[index].status = "Recusado";
                 salva();
                 toastService.showActionToast("Pedido recusado com sucesso!");
             }, function () {
@@ -49,7 +49,7 @@ angular.module('feirinha').component('listaPedidos', {
         };
         
         this.podeAlterarStatus = function (index) {
-            return self.pedidos.pedidos[index].status != "Pendente";
+            return self.pedidos[index].status != "Pendente";
         }
     }]
 });
