@@ -2,7 +2,7 @@
     <div class="loading-indicator" ng-if="$ctrl.canShow">
         <md-progress-circular md-mode="indeterminate"></md-progress-circular>
     </div>
-    <div class='md-padding' layout="row" flex>
+    <div class='md-padding' layout="row" ng-if="!$ctrl.canShow" flex>
         <div layout="row" flex>
             <div class="parent" layout="column" ng-repeat="pedido in $ctrl.getPedidos() track by $index" flex>
                 <md-card>
