@@ -25,8 +25,8 @@
                                 <label for="lista">Produtos</label>
                             </span>
                             <div id="lista" layout="column">
-                                <div ng-repeat="produto in pedido.produtos">
-                                    <p><b>{{produto.quantidade}}x</b> {{produto.nome}}</p>
+                                <div ng-repeat="(produto,quantidade) in pedido.produtos">
+                                    <p><b>{{quantidade}}x</b> {{produto}}</p>
                                 </div>
                             </div>
                             <md-card-actions layout="row" layout-align="space-around center">

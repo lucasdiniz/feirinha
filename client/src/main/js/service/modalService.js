@@ -8,8 +8,8 @@ angular.module('feirinha').service('modalService', ['$mdDialog', function($mdDia
             //.theme($rootScope.theme)
             .textContent(message)
             .multiple(true)
-            .ok('Sim')
-            .cancel('Não');
+            .cancel('Não')
+            .ok('Sim');
 
         return $mdDialog.show(modal);
     };
