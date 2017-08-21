@@ -6,5 +6,10 @@ angular.module('feirinha').component('navbar', {
     controller: ['$state', function ($state) {
         var self = this;
 
+        this.showReports = function () {
+
+            $state.go('app.relatorios', {});
+
+        };
     }]
 });

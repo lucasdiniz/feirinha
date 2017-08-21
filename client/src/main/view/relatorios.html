@@ -1,0 +1,15 @@
+<md-content style="background-color: white; overflow-y: scroll;" layout-fill>
+    <div class="loading-indicator" ng-if="relatoriosCtrl.canShow">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
+
+    <div layout="row" layout-align="space-around center" layout-wrap>
+        <div id="statusChart" flex="50"></div>
+        <div id="produtosAprovadosChart" flex="50"></div>
+        <div id="produtosRecusadosChart" flex="50"></div>
+        <div id="doacoesChart" flex="50"></div>
+    </div>
+
+
+
+</md-content>

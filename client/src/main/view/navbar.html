@@ -1,33 +1,43 @@
 <div layout="row" ng-cloak layout>
-    <md-toolbar class="md-theme">
+    <md-toolbar md-colors="{backgroundColor : 'orange-600'}">
         <div layout="row">
-            <md-toolbar-filler layout layout-align="center center">
-                <p class="md-subhead">LOGO</p>
-            </md-toolbar-filler>
 
-        <div layout="row" layout-align="center center" flex-offset="85">
-            <md-menu-bar>
-                <md-menu>
-                    <md-button ng-click="$mdMenu.open()">
-                        Cadastrar
-                    </md-button>
-                    <md-menu-content width="3">
-                        <md-menu-item>
-                            <md-button>
-                                Funcionario
-                            </md-button>
-                        </md-menu-item>
-                        <md-menu-item>
-                            <md-button>
-                                Produto
-                            </md-button>
-                        </md-menu-item>
-                    </md-menu-content>
-                </md-menu>
-            </md-menu-bar>
+            <div id="logo-nome" layout="row">
+                <!--<md-toolbar-filler layout layout-align="center center" layout-margin>-->
+                    <div layout layout-align="center center" layout-margin>
+                    <img width="50" height="35" ng-src="http://i.imgur.com/EN1B9UO.png">
+                    </div>
+                <!--</md-toolbar-filler>-->
+                <div layout="column" layout-align="center center">
+                    <span class="md-headline" style="font-family: 'American Typewriter';">BudegAmiga</span>
+                </div>
+            </div>
 
-        </div>
+            <div layout="row" layout-align="end center" flex>
+                <md-button style="font-size: 14px;" ng-click="$ctrl.showReports()">
+                    Relatorios
+                </md-button>
+                <md-menu-bar>
+                    <md-menu>
+                        <md-button ng-click="$mdMenu.open()" style="font-size: 14px;">
+                            Cadastrar
+                        </md-button>
+                        <md-menu-content width="3">
+                            <md-menu-item>
+                                <md-button>
+                                    Funcionario
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button>
+                                    Produto
+                                </md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                </md-menu-bar>
 
+            </div>
         </div>
     </md-toolbar>
 </div>
